@@ -23,9 +23,43 @@
 </head>
 
 <body>
+
+<!--  Connecting to the DB -->
+<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+	url="jdbc:mysql://localhost/pets" user="root" password="mysql" />
+
+<!--  select statement for Pet Profile values  -->
+<sql:query dataSource="${snapshot}" var="result">
+SELECT * from pets
+WHERE idPets = 1;
+</sql:query>
+
+<!--  select statement for next appointment values  -->
+<sql:query dataSource="${snapshot}" var="next-appointment">
+SELECT AppointmentDate, AppointmentStartTime, AppointmentDescription
+FROM appointment
+WHERE AppointmentDate >= CURDATE();
+</sql:query>
+
+<!--  select statement for previous 3 appointments  -->
+<sql:query dataSource="${snapshot}" var="previous-appointments">
+SELECT AppointmentDate, AppointmentStartTime, AppointmentDescription
+FROM appointment
+WHERE AppointmentDate <= CURDATE();
+ORDER BY AppointmentDate DESC
+LIMIT 3;
+</sql:query>
+
+<sql:query dataSource="${snapshot}" var="previous-treatments">
+SELECT TreatmentDate, TreatmentDescription, TreatmentEndTime, TreatmentPrice
+FROM treatement
+ORDER BY TreatmentDate DESC
+LIMIT 3;
+</sql:query>
+
 	<div class="container">
 		<jsp:include page="_menu.jsp"></jsp:include>
-		
+
 		<div class="page-title">
 			<h2>Lets Keep Kobe Healthy!</h2>
 		</div>
@@ -38,57 +72,69 @@
 				<h3 id="pet-profile-h3">Pet Profile</h3>
 				<ul id="pet-profile-list">
 					<!-- Make these values come from the database-->
-					<li class="pet-profile-list-items">Name: 	Kobe Gelsomino</li>
-					<li class="pet-profile-list-items">Breed: 	Australian Shepherd / Border Collie</li>
-					<li class="pet-profile-list-items">Color: 	Blue Merle</li>
-					<li class="pet-profile-list-items">Weight: 	54lbs</li>
-					<li class="pet-profile-list-items">Birthday: 3/14/2012</li>
+					<li class="pet-profile-list-items">Name: <c:out
+							value="${result.PetName}" /></li>
+					<li class="pet-profile-list-items">Breed: <c:out
+							value="${result.PetBreed}" /></li>
+					<li class="pet-profile-list-items">Color: <c:out
+							value="${result.PetColor}" /></li>
+					<li class="pet-profile-list-items">Weight: <c:out
+							value="${result.PetWeight}" /></li>
+					<li class="pet-profile-list-items">Birthday: <c:out
+							value="${result.PetBirthDate}" /></li>
 				</ul>
 			</div>
 		</div>
-		<div class="col-md-12">
-			<h3>Test Table of Pets</h3>
+		<div class="col-md-6">
+			<h3>Next Appointment</h3>
+			<h4>
+				<c:out value="${next-appointment.AppointmentDate}" />
+				at
+				<c:out value="${next-appointment.AppointmentStartTime}" />
+				for
+				<c:out value="${next-appointment.AppointmentDescription}" />
+			</h4>
 		</div>
-		<div class="col-md-12">
+
+		<div class="col-md-6">
+			<h3 class="col-md-12">Previous Appointments</h3>
 			<table border="1" width="100%">
 				<tr>
-					<th>Pet ID</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Age</th>
+					<th>Appointment Date</th>
+					<th>Appointment Start Time</th>
+					<th>Appointment Description</th>
 				</tr>
-				<c:forEach var="row" items="${result.rows}">
+<%-- 				<c:forEach var="row" items="${previous-appointments.rows}"> --%>
 					<tr>
-						<td><c:out value="${row.id}" /></td>
-						<td><c:out value="${row.first}" /></td>
-						<td><c:out value="${row.last}" /></td>
-						<td><c:out value="${row.age}" /></td>
+						<td><c:out value="${row.AppointmentDate}" /></td>
+						<td><c:out value="${row.AppointmentStartTime}" /></td>
+						<td><c:out value="${row.AppointmentDescription}" /></td>
 					</tr>
-				</c:forEach>
+<%-- 				</c:forEach> --%>
 			</table>
 		</div>
-		<div class="col-md-12">
-			<h3>Upcoming Appointments</h3>
+		
+		<div class="col-md-6">
+			<h3 class="col-md-12">Previous Treatments</h3>
+			<table border="1" width="100%">
+				<tr>
+					<th>Date Given</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Expiration Date</th>
+				</tr>
+<%-- 				<c:forEach var="row" items="${previous-treatments.rows}"> --%>
+					<tr>
+						<td><c:out value="${row.TreatmentDate}" /></td>
+						<td><c:out value="${row.TreatmentDescription}" /></td>
+						<td><c:out value="${row.TreatmentPrice}" /></td>
+						<td><c:out value="${row.TreatmentEndTime}" /></td>
+					</tr>
+<%-- 				</c:forEach> --%>
+			</table>
 		</div>
-		<div class="col-md-12">
-			<ul>
-				<li>2/3/2017 - Check Up at Countryside Animal Hospital</li>
-				<li>2/21/2017 - Haircut and Bath at Caroline's</li>
-				<li>4/17/2017 - Doggy Day Camp at PetSmart all day</li>
-			</ul>
-		</div>
-		<div class="col-md-12">
-			<h3>Vaccines and Injection Expiration</h3>
-		</div>
-		<div class="col-md-12">
-			<ul>
-				<li>2 days till Expiration - 2/3/2017 Heart Worm (Monthly)</li>
-				<li>5 days till Expiration - 2/7/2017 - Flea and Tick (Monthly)</li>
-				<li>28 days till Expiration - Bordatella Vaccine - 3/3/2017
-					(Yearly)</li>
-			</ul>
-		</div>
-		</div>
-		<jsp:include page="_footer.jsp"></jsp:include>
+
+	</div>
+	<jsp:include page="_footer.jsp"></jsp:include>
 </body>
 </html>
