@@ -46,10 +46,10 @@
 			</form>
 		</div>
 		<div class="col-md-12 login-btns">
-			<div class="col-md-6" id="btn-submit">
+			<div class="col-sm-6 col-md-6" id="btn-submit">
 				<a href="home" class="btn btn-primary btn-md submit-btns" role="button">Log In</a>
 			</div>
-			<div class="col-md-6" id="btn-newuser">
+			<div class="col-sm-6 col-md-6" id="btn-newuser">
 				<a href="NewUserServlet" class="btn btn-info btn-md submit-btns" role="button">New User</a>
 			</div>
 		</div>
