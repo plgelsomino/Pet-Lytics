@@ -35,8 +35,8 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="AppointmentServlet">Appointments and Bills</a></li>
+					<li class="active"><a href="home">Home</a></li>
+					<li><a href="AppointmentServlet">Add New</a></li>
 					<li><a href="StatisticsServlet">Statistics</a></li>
 					<li><a href="#">Friends</a></li>
 				</ul>

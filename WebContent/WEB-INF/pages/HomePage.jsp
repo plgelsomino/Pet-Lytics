@@ -96,25 +96,27 @@ LIMIT 3;
 			</h4>
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-md-12 col-sm-12">
 			<h3 class="col-md-12">Previous Appointments</h3>
 			<table border="1" width="100%">
 				<tr>
 					<th>Appointment Date</th>
 					<th>Appointment Start Time</th>
 					<th>Appointment Description</th>
+					<th>With Pet</th>
 				</tr>
 <%-- 				<c:forEach var="row" items="${previous-appointments.rows}"> --%>
 					<tr>
 						<td><c:out value="${row.AppointmentDate}" /></td>
 						<td><c:out value="${row.AppointmentStartTime}" /></td>
 						<td><c:out value="${row.AppointmentDescription}" /></td>
+						<td><c:out value="${row.PetName}" /></td>
 					</tr>
 <%-- 				</c:forEach> --%>
 			</table>
 		</div>
 		
-		<div class="col-md-6">
+		<div class="col-md-12 col-sm-12">
 			<h3 class="col-md-12">Previous Treatments</h3>
 			<table border="1" width="100%">
 				<tr>
@@ -122,6 +124,7 @@ LIMIT 3;
 					<th>Description</th>
 					<th>Price</th>
 					<th>Expiration Date</th>
+					<th>For Pet</th>
 				</tr>
 <%-- 				<c:forEach var="row" items="${previous-treatments.rows}"> --%>
 					<tr>
@@ -129,6 +132,7 @@ LIMIT 3;
 						<td><c:out value="${row.TreatmentDescription}" /></td>
 						<td><c:out value="${row.TreatmentPrice}" /></td>
 						<td><c:out value="${row.TreatmentEndTime}" /></td>
+						<td><c:out value="${row.PetName}" /></td>
 					</tr>
 <%-- 				</c:forEach> --%>
 			</table>

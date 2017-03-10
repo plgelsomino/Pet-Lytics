@@ -61,6 +61,7 @@ ORDER BY PetBirthDate DESC
 				<table border="1" width="100%">
 					<tr>
 						<th>Appointment Date</th>
+						<th>Pet</th>
 						<th>Start Time</th>
 						<th>End Time</th>
 						<th>Visit Description</th>
@@ -71,6 +72,7 @@ ORDER BY PetBirthDate DESC
 					<c:forEach items="${appointmentQuery}" var="appointment">
 					<tr>
 						<td>${appointment.apptDate}</td>
+						<td>${appointment.PetName}</td>
 						<td>${appointment.apptStartTime}</td>
 						<td>${appointment.apptEndTime}</td>
 						<td>${appointment.visitDescription}</td>
@@ -137,6 +139,8 @@ ORDER BY PetBirthDate DESC
 				<table border="1" width="100%">
 					<tr>
 						<th>Date Given</th>
+						<th>Pet</th>
+						<th>Appointment</th>
 						<th>Expiration</th>
 						<th>Cost</th>
 						<th>Description</th>
@@ -147,6 +151,8 @@ ORDER BY PetBirthDate DESC
 					<c:forEach items="${treatmentQuery}" var="treatment">
 					<tr>
 						<td>${treatment.TreatmentDate}</td>
+						<td>${treatment.TreatmentPetName}</td>
+						<td>${treatment.TreatmentAppointment}</td>
 						<td>${treatment.TreatmentEndTime}</td>
 						<td>${treatment.TreatmentCost}</td>
 						<td>${treatment.TreatmentDescription}</td>
@@ -176,6 +182,13 @@ ORDER BY PetBirthDate DESC
 						<input type="text" class="form-control"
 							id="treatmentEndTime" placeholder="Select Expiration Date" name="treatmentEndTime"
 							value="${treatment.TreatmentEndTime}">
+					</div>
+					
+					<div class="col-sm-4 form-group">
+						<label class="new-appointment-labels" for="inputPetName">Given to Pet</label> 
+						<input type="text" class="form-control"
+							id="treatmentPet" placeholder="Enter Pet Name" name="treatmentPet"
+							value="${treatment.PetName}">
 					</div>
 					
 					<div class="col-sm-4 form-group">
@@ -220,16 +233,20 @@ ORDER BY PetBirthDate DESC
 						<th>Purchase Town</th>
 						<th>Weight</th>
 						<th>Color</th>
+						<th>Edit</th>
+						<th>Delete</th>
 					</tr>
 					</tr>
 					<c:forEach items="${petsQuery}" var="pets">
 					<tr>
 						<td>${pets.PetName}</td>
-						<td>${pets.PetName}</td>
-						<td>${pets.PetName}</td>
-						<td>${pets.PetName}</td>
-						<td>${pets.PetName}</td>
-						<td>${pets.PetName}</td>
+						<td>${pets.PetType}</td>
+						<td>${pets.PetBreed}</td>
+						<td>${pets.PetBirthDate}</td>
+						<td>${pets.PetPurchasePlace}</td>
+						<td>${pets.PetPurchaseTown}</td>
+						<td>${pets.PetWeight}</td>
+						<td>${pets.PetColor}</td>
 						<td><a href="editAppointment?apptDate=${pets.date}">Edit</a>
 						</td>
 						<td><a href="deleteAppointment?apptDate=${pets.date}">Delete</a>
