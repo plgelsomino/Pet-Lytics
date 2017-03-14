@@ -27,8 +27,6 @@ public class NewUserServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Forward to /WEB-INF/pages/HomePage.jsp
-		// (Users can not access directly into JSP pages placed in WEB-INF)
 
 //		response.setContentType("text/html");
 //		PrintWriter pw = response.getWriter();
@@ -88,9 +86,8 @@ public class NewUserServlet extends HttpServlet {
 //			pw.println(e);
 //		}
 
-	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/pages/NewUser.jsp");
-
-	dispatcher.forward(request,response);
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/pages/NewUser.jsp");
+		dispatcher.forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

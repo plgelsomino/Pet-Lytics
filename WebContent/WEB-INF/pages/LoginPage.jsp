@@ -24,35 +24,39 @@
 		<div class="col=md-12">
 			<div class="page-title">
 				<h2 class="col-md-12">WELCOME TO PET-LYTICS</h2>
-				<h3>Lets keep track of all Fido's information, appointments, and spending. </h3>
+				<h3>Lets keep track of all Fido's information, appointments,
+					and spending.</h3>
 			</div>
 
-			<!-- 	<form method="POST" action="doLogin"> -->
-			<form>
-				<table border="0" id="login-table">
-					<tr>
-						<td class="login-table-labels">User Name</td>
-						<td><input type="text" name="code" value="${user.username}" /></td>
-					</tr>
-					<tr>
-						<td class="login-table-labels">Password</td>
-						<td><input type="text" name="name" value="${user.password}" /></td>
-					</tr>
-					<tr>
-						<td>Remember Me</td>
-						<td><input type="checkbox" name="rememberMe" value="Y" /></td>
-					</tr>
-				</table>
-			</form>
+			<form name="loginForm" method="post" action="CheckLoginServlet">
+				<form>
+					<table border="0" id="login-table">
+						<tr>
+							<td class="login-table-labels">User Name</td>
+							<td><input type="text" name="username" " /></td>
+						</tr>
+						<tr>
+							<td class="login-table-labels">Password</td>
+							<td><input type="password" name="password" " /></td>
+						</tr>
+						<tr>
+							<td>Remember Me</td>
+							<td><input type="checkbox" name="rememberMe" value="Y" /></td>
+						</tr>
+					</table>
+					<div class="col-md-12 login-btns">
+						<div class="col-sm-6 col-md-6" id="btn-submit">
+								<input class="btn btn-primary btn-md submit-btns" type="submit" value="Login" />
+
+						</div>
+						<div class="col-sm-6 col-md-6" id="btn-newuser">
+							<a href="NewUserServlet" class="btn btn-info btn-md submit-btns"
+								role="button">New User</a>
+						</div>
+					</div>
+				</form>
 		</div>
-		<div class="col-md-12 login-btns">
-			<div class="col-sm-6 col-md-6" id="btn-submit">
-				<a href="home" class="btn btn-primary btn-md submit-btns" role="button">Log In</a>
-			</div>
-			<div class="col-sm-6 col-md-6" id="btn-newuser">
-				<a href="NewUserServlet" class="btn btn-info btn-md submit-btns" role="button">New User</a>
-			</div>
-		</div>
+
 	</div>
 
 	<jsp:include page="_footer.jsp"></jsp:include>
