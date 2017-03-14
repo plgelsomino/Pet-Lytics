@@ -31,46 +31,51 @@
 
 		<div id="new-user-entire-form">
 			<div class="col-md-6">
-				<form method="POST" action="doNewUserLogin">
+				<form name="newUserForm" method="post" action="doNewUserServlet">
 					<!--  Email -->
 					<div class="form-group">
 						<label class="new-user-labels" for="inputEmail">Enter
-							Email Address</label> <input type="email" class="form-control"
-							id="inputEmail" placeholder="Enter email" name="userName"
-							value="${user.username}">
+							Email Address</label> 
+						<input type="email" class="form-control" id="inputEmail" placeholder="Enter email" name="userName">
 					</div>
 
-					<!-- Password1 -->
+					<!-- Username -->
+					<div class="form-group">
+						<label for="inputUsername">Enter Username</label> <input
+							type="text" class="form-control" id="inputUsername"
+							placeholder="Enter Username" name="inputUsername">
+					</div>
+
+					<!-- Password -->
 					<div class="form-group">
 						<label for="inputPassword1">Enter Password</label> <input
 							type="password" class="form-control" id="inputPassword1"
-							placeholder="Enter Password" name="password1"
-							value="${user.password}">
+							placeholder="Enter Password" name="password1">
 					</div>
-					<!-- Password2 -->
-					<div class="form-group">
-						<label for="inputPassword2">Enter Password Again</label> <input
-							type="password" class="form-control" id="inputPassword2"
-							placeholder="Enter Password" name="password2"
-							value="${user.password}">
-					</div>
+					
+<!-- 					User First Name -->
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="userFirstName">What is your first name?</label> <input -->
+<!-- 							type="text" class="form-control" id="userFirstName" -->
+<!-- 							placeholder="Enter Your first name" name="userFirstName" -->
+<%-- 							value="${user.firstName}"> --%>
+<!-- 					</div> -->
 
-					<!-- User First Name -->
-					<div class="form-group">
-						<label for="userFirstName">What is your first name?</label> <input
-							type="text" class="form-control" id="userFirstName"
-							placeholder="Enter Your first name" name="userFirstName"
-							value="${user.firstName}">
-					</div>
+<!-- 					User Last Name -->
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="userLastName">What is your last name?</label> <input -->
+<!-- 							type="text" class="form-control" id="userLastName" -->
+<!-- 							placeholder="Enter Your last name" name="userLastName" -->
+<%-- 							value="${user.lastName}"> --%>
+<!-- 					</div> -->
 
-					<!-- User Last Name -->
+					<!-- Pets Name -->
 					<div class="form-group">
-						<label for="userLastName">What is your last name?</label> <input
-							type="text" class="form-control" id="userLastName"
-							placeholder="Enter Your last name" name="userLastName"
-							value="${user.lastName}">
+						<label for="petName">What is your Pets name?</label> <input
+							type="text" class="form-control" id="petName"
+							placeholder="Enter your pets name" name="petName">
 					</div>
-
+					
 					<div class="form-group">
 						<label for="typeOfPetSet">What type of pet do you have?</label> <select
 							class="form-control" id="typeOfPetSet">
@@ -81,55 +86,63 @@
 						</select>
 					</div>
 
-					<!-- Pets Name -->
-					<div class="form-group">
-						<label for="petName">What is your Pets name?</label> <input
-							type="text" class="form-control" id="petName"
-							placeholder="Enter your pets name" name="petName"
-							value="${pet.petName}">
-					</div>
-
 					<!-- Pets Breed -->
 					<div class="form-group">
 						<label for="petBreed">What is the breed of your pet?</label> <input
 							type="text" class="form-control" id="petBreed"
-							placeholder="Enter your pet breed" name="petBreed"
-							value="${pet.breed}">
-					</div>
-
-					<div class="form-group">
-						<label for="typeOfPetSet">Where did you get your pet?</label> <select
-							class="form-control" id="typeOfPetSet">
-							<option value="1">Rescue/Shelter</option>
-							<option value="2">Breeder</option>
-							<option value="3">Pet Shop</option>
-							<option value="4">Other</option>
-						</select>
+							placeholder="Enter your pet breed" name="petBreed">
 					</div>
 
 					<!-- Pets Birthday -->
 					<div class="form-group">
-						<label for="petBirthday">What is your pets birthday?</label> <input
-							type="text" class="form-control" id="petBirthday"
-							placeholder="Enter your pets birthday" name="userLastName"
-							value="${pet.birthday}">
+						<label for="petBirthDate">What is your pets birthday?</label> <input
+							type="text" class="form-control" id="petBirthDate"
+							placeholder="Enter your pets birthday" name="petBirthDate">
 					</div>
 
-					<!-- Pets Birthday -->
+					<!-- Pet Purchase Place -->
+					<div class="form-group">
+						<label for="petPurchasePlace">Where did you get your pet?</label> <input
+							type="text" class="form-control" id="petPurchasePlace"
+							placeholder="Enter where you bought your pet" name="petPurchasePlace">
+					</div>
+
+					<!-- Pet Purchase Town -->
+					<div class="form-group">
+						<label for="petPurchaseTown">What town did your get your pet in?</label> <input
+							type="text" class="form-control" id="petPurchaseTown"
+							placeholder="Enter the town you bought your pet in" name="petPurchaseTown">
+					</div>
+					
+					<!-- Pets Purchase Date -->
+					<div class="form-group">
+						<label for="petPurchaseDate">What date did you buy your pet?</label> <input
+							type="text" class="form-control" id="petPurchaseDate"
+							placeholder="Enter your pet purchase date" name="petPurchaseDate">
+					</div>
+					
+					<!-- Pet Weight -->
+					<div class="form-group">
+						<label for="petWeight">How heavy is your pet in lbs?</label> <input
+							type="text" class="form-control" id="petWeight"
+							placeholder="Enter your pets weight" name="petWeight">
+					</div>
+
+					<!-- Pets Color -->
 					<div class="form-group">
 						<label for="petColor">What color is your pet?</label> <input
 							type="text" class="form-control" id="petColor"
-							placeholder="Enter your pets color" name="petColor"
-							value="${pet.color}">
+							placeholder="Enter your pets color" name="petColor">
 					</div>
 					<div class="new-user-buttons">
 						<button class="btn btn-primary btn-md">
-							<a href="home"></a>Submit
+							<input type="submit" value="Submit" />
 						</button>
 						<button class="btn btn-danger btn-md">
 							<a href="home"></a>Clear
 						</button>
 					</div>
+				</form>
 			</div>
 
 			<div class="col-md-6">
@@ -137,7 +150,7 @@
 				<br> <img class="img-responsive"
 					src="http://placehold.it/400x400">
 			</div>
-			</form>
+
 		</div>
 	</div>	<!-- Container end -->
 	
