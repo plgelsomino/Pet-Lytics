@@ -13,12 +13,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class CheckLoginServlet
  */
 @WebServlet("/CheckLoginServlet")
 public class CheckLoginServlet extends HttpServlet {
+	
+	int dbOwnerId;
+	
 	private static final long serialVersionUID = 1L;
 
     public CheckLoginServlet() {
@@ -26,12 +30,15 @@ public class CheckLoginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//set session object so we can get it for home page dash board
+		HttpSession session = request.getSession();
 		
 		String username = request.getParameter("username").toLowerCase();
         String password = request.getParameter("password").toLowerCase();
@@ -40,8 +47,15 @@ public class CheckLoginServlet extends HttpServlet {
         System.out.println("password: " + password);
  
         if(checkLogin(username, password)) {
+        	//set session variables so we can get it for home page dashboard
+        	session.setAttribute("username", request.getParameter("username"));
+        	session.setAttribute("password", request.getParameter("password"));
+        	session.setAttribute("dbOwnerId", request.getParameter("bdOwnerId"));
+        	
+        	//if login info is correct send to home screen to view dash board. 
         	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/pages/HomePage.jsp");
         	dispatcher.forward(request, response);
+        	
         } else {
         	System.out.println("PETE: Username and password dont match.");
         	System.out.println("PETE: send javascript error.");
@@ -51,7 +65,7 @@ public class CheckLoginServlet extends HttpServlet {
 	
 	public boolean checkLogin(String username, String password) {
     	String query;
-        String dbUsername, dbPassword;
+        String dbUsername, dbPassword;		// need to be able to query database on jsp side and set to session variable to make is easy
         boolean login = false;
            
         try {
@@ -62,12 +76,14 @@ public class CheckLoginServlet extends HttpServlet {
             query = "SELECT username, password "
             		+ "FROM users "
             		+ "WHERE username='" + username + "' AND password='" + password + "';";
+            
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while(rs.next()){
                 dbUsername = rs.getString("Username");
                 dbPassword = rs.getString("Password");
-
+                dbOwnerId = rs.getInt("idUser");
+                
                 if(dbUsername.equals(username) && dbPassword.equals(password)){
                     System.out.println("Found User");
                     login = true;

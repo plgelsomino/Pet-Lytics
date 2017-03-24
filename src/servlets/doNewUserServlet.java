@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.print.attribute.ResolutionSyntax;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,20 +51,67 @@ public class doNewUserServlet extends HttpServlet {
          
         try {
 			insertIntoUsersTable(username, password, email);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
 			insertIntoPetsTable(petName, petType, petBreed, petBirthDate, petPurchasePlace, petPurchaseTown, petPurchaseDate, petWeight, petColor);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		
+        try {
+        	int[] userPetArray = getNewUserIdAndPetId(username, email, petName, petType);
+        	int idUser = userPetArray[0];
+        	int idPet = userPetArray[0];
+        	
+			insertPetOwnerPetRelationship(idUser, idPet);
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	} 
+	
+	/*
+	 *  Returns array 
+	 *  Array has new user id that was just created
+	 * 	and has new petId that was just created
+	 *  
+	 *  parameters are from user variables just created
+	 *  username and email are unique
+	 *  petName and petType are unique
+	 */ 
+	public int[] getNewUserIdAndPetId(String username, String email, String petName, String petType) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+                 
+         Connection connection = getDatabaseConnection();
+         Statement stmt = (Statement) connection.createStatement();
+         
+         int dbUserId = 0;
+         int dbPetId = 0;
+         int[] userPetArray = new int[2];
+         
+         String queryUser = "SELECT idUser "
+         		+ "FROM users "
+         		+ "WHERE Username='" + username + "' AND Email='" + email + "';";
+         
+         String queryPets = "SELECT idPets "
+          		+ "FROM pets "
+          		+ "WHERE PetName='" + petName + "' AND PetType='" + petType + "';";
+         
+         stmt.executeQuery(queryUser);
+         ResultSet rsUsers = stmt.getResultSet();
+         while(rsUsers.next()){
+             dbUserId = rsUsers.getInt("idUser");
+             userPetArray[0] = dbUserId;
+         }
+         
+         stmt.executeQuery(queryPets);
+         ResultSet rsPets = stmt.getResultSet();
+         while(rsPets.next()){
+             dbPetId = rsPets.getInt("idPets");
+             userPetArray[1] = dbPetId;
+         }
+         	return userPetArray;
 	}
+	
+	
 	
 	public void insertIntoUsersTable(String username, String password, String email) throws SQLException {
 		Connection connection = getDatabaseConnection();

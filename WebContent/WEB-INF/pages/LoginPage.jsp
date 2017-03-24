@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,6 +18,13 @@
 <link href="https://fonts.googleapis.com/css?family=Sansita"
 	rel="stylesheet">
 
+<script
+  src="https://code.jquery.com/jquery-3.2.0.js"
+  integrity="sha256-wPFJNIFlVY49B+CuAIrDr932XSb6Jk3J1M22M3E2ylQ="
+  crossorigin="anonymous"></script>
+  	
+<script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/javascript.js"></script>
+
 </head>
 <body>
 
@@ -33,11 +41,12 @@
 					<table border="0" id="login-table">
 						<tr>
 							<td class="login-table-labels">User Name</td>
-							<td><input type="text" name="username" " /></td>
+							<td><input type="text" name="username"/></td>
+							<input name="username" type="hidden" value=""/>
 						</tr>
 						<tr>
 							<td class="login-table-labels">Password</td>
-							<td><input type="password" name="password" " /></td>
+							<td><input type="password" name="password"/></td>
 						</tr>
 						<tr>
 							<td>Remember Me</td>

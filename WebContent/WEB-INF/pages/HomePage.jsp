@@ -31,7 +31,8 @@
 <!--  select statement for Pet Profile values  -->
 <sql:query dataSource="${snapshot}" var="result">
 SELECT * from pets
-WHERE idPets = 1;
+WHERE user = 1;
+ <sql:param value="${sessionScope.username}" />
 </sql:query>
 
 <!--  select statement for next appointment values  -->
@@ -61,7 +62,7 @@ LIMIT 3;
 		<jsp:include page="_menu.jsp"></jsp:include>
 
 		<div class="page-title">
-			<h2>Lets Keep Kobe Healthy!</h2>
+			<h2>Lets Keep Kobe Healthy! <c:out value="" /></h2>
 		</div>
 
 		<div class="col-md-12">

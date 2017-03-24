@@ -16,6 +16,13 @@
 
 <link href="https://fonts.googleapis.com/css?family=Sansita"
 	rel="stylesheet">
+	
+<script
+  src="https://code.jquery.com/jquery-3.2.0.js"
+  integrity="sha256-wPFJNIFlVY49B+CuAIrDr932XSb6Jk3J1M22M3E2ylQ="
+  crossorigin="anonymous"></script>
+  	
+<script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/javascript.js"></script>
 
 </head>
 <body>
