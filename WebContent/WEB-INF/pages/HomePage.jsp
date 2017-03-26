@@ -30,8 +30,20 @@
 
 <!--  select statement for Pet Profile values  -->
 <sql:query dataSource="${snapshot}" var="result">
-SELECT * from pets
-WHERE user = 1;
+SELECT
+	pets.PetName,
+	pets.PetType,
+	pets.PetBreed,
+	pets.PetBirthDate,
+	pets.PetWeight,
+	pets.PetPurchaseTown,
+	pets.PetColor
+FROM pets
+	LEFT JOIN PetOwner_has_Pets pohp
+		ON pets.idPets = pohp.Pets_idPets
+	LEFT JOIN PetOwner po
+		ON pohp.PetOwner_idPetOwner = po.idPetOwner
+ORDER BY pets.PetBirthDate DESC;
  <sql:param value="${sessionScope.username}" />
 </sql:query>
 

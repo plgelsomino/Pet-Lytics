@@ -24,28 +24,27 @@
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Pet-Lytics</a>
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#myNavbar">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Pet-Lytics</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="home">Home</a></li>
+						<li><a href="AppointmentServlet">Add New</a></li>
+						<li><a href="StatisticsServlet">Statistics</a></li>
+						<li><a href="#">Friends</a></li>
+					</ul>
+					<form name="logoutBtn" method="post" action="Logout">
+						<li><a id="logoutForm"><span id="logout" class="glyphicon glyphicon-log-in"></span><input id="logoutBtn" type="submit" value="Logout" /></a></li>
+					</form>
+				</div>
 			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="home">Home</a></li>
-					<li><a href="AppointmentServlet">Add New</a></li>
-					<li><a href="StatisticsServlet">Statistics</a></li>
-					<li><a href="#">Friends</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							Logout</a></li>
-				</ul>
-			</div>
-		</div>
 		</div>
 	</nav>
 </body>

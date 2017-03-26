@@ -37,7 +37,6 @@
 			</div>
 
 			<form name="loginForm" method="post" action="CheckLoginServlet">
-				<form>
 					<table border="0" id="login-table">
 						<tr>
 							<td class="login-table-labels">User Name</td>

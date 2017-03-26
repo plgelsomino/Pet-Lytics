@@ -73,7 +73,7 @@ public class CheckLoginServlet extends HttpServlet {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/pets", "root", "gels0207");
             Statement stmt = (Statement) con.createStatement();
             
-            query = "SELECT username, password "
+            query = "SELECT iduser, username, password "
             		+ "FROM users "
             		+ "WHERE username='" + username + "' AND password='" + password + "';";
             
