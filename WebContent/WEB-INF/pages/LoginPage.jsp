@@ -17,13 +17,14 @@
 
 <link href="https://fonts.googleapis.com/css?family=Sansita"
 	rel="stylesheet">
-
-<script
-  src="https://code.jquery.com/jquery-3.2.0.js"
-  integrity="sha256-wPFJNIFlVY49B+CuAIrDr932XSb6Jk3J1M22M3E2ylQ="
+  
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
   	
-<script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/javascript.js"></script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/javascript.js"></script>
 
 </head>
 <body>
@@ -40,21 +41,21 @@
 					<table border="0" id="login-table">
 						<tr>
 							<td class="login-table-labels">User Name</td>
-							<td><input type="text" name="username"/></td>
+							<td><input id="loginPageUserNameTextField" type="text" name="username"/></td>
 							<input name="username" type="hidden" value=""/>
 						</tr>
 						<tr>
 							<td class="login-table-labels">Password</td>
-							<td><input type="password" name="password"/></td>
+							<td><input id="loginPagePasswordTextField" type="password" name="password"/></td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td>Remember Me</td>
 							<td><input type="checkbox" name="rememberMe" value="Y" /></td>
-						</tr>
+						</tr> -->
 					</table>
 					<div class="col-md-12 login-btns">
 						<div class="col-sm-6 col-md-6" id="btn-submit">
-								<input class="btn btn-primary btn-md submit-btns" type="submit" value="Login" />
+								<input class="btn btn-primary btn-md submit-btns" id="loginPageSubmitBtn" type="submit" value="Login" />
 
 						</div>
 						<div class="col-sm-6 col-md-6" id="btn-newuser">

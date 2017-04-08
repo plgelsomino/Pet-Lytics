@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import classes.Pet;
+import classes.UserAccounts;
+
 /**
  * Servlet implementation class doNewUserServlet
  */
@@ -48,7 +51,11 @@ public class doNewUserServlet extends HttpServlet {
         String petPurchaseDate = request.getParameter("petPurchaseDate");
         String petWeight = request.getParameter("petWeight");
         String petColor = request.getParameter("petColor");
-         
+        String petPicture = null;
+        
+        UserAccounts newUser = new UserAccounts(username, password, email);
+        Pet pet = new Pet(petName, petType, petBreed, petBirthDate, petPurchasePlace, petPurchaseTown, petPurchaseDate, petWeight, petColor, petPicture);
+       	
         try {
 			insertIntoUsersTable(username, password, email);
 			insertIntoPetsTable(petName, petType, petBreed, petBirthDate, petPurchasePlace, petPurchaseTown, petPurchaseDate, petWeight, petColor);

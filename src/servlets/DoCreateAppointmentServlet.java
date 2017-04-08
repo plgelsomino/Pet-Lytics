@@ -29,7 +29,7 @@ public class DoCreateAppointmentServlet extends HttpServlet {
 	   
 	   //Checks servlet request and assigns to variable conn
         Connection conn = MyUtils.getStoredConnection(request);
- 
+        
         // Requesting appointment information from servlet
 		String apptDate = (String) request.getParameter("apptDate");
 		String apptStartTime = (String) request.getParameter("apptStartTime");

@@ -2,12 +2,11 @@
  * Java Script file 
  */
 
-/**
- * Target New User JSP
- * */
 
-$(":input").each(function() {
-   if($(this).val() === "")
-    alert("Please fill out all fields before submitting!");
+// triming whitespace at the begining and end of user text in input fields
+$('#loginPageSubmitBtn').click(function(){
+  if(($.trim($('#loginPageUserNameTextField').val()) == '') || ($.trim($('#loginPagePasswordTextField').val()) == '')) {
+      alert('Please enter both username and password');
+  }
 });
 

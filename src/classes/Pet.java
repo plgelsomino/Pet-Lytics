@@ -1,52 +1,41 @@
 package classes;
 
-public abstract class Pet {
+public class Pet {
 	private String petName;
-	private int petAge;
-	private String petGender;
+	private String petType;
 	private String petBreed;
-	private String petColor;
-	private String petBirthday;
+	private String petBirthDate;
 	private String petPurchasePlace;
 	private String petPurchaseTown;
+	private String petPurchaseDate;
+	private String petWeight;
+	private String petColor;
 	private String petPicture;
 	
-	public Pet(String petName) {
+	public Pet(String petName, String petType, String petBreed, String petBirthDate, String petPurchasePlace,
+			String petPurchaseTown, String petPurchaseDate, String petWeight, String petColor, String petPicture) {
 		this.petName = petName;
-	}
-	
-	public Pet(String petName, int petAge, String petGender, String petBreed, String petColor, String petBirthday,
-			String petPurchasePlace, String petPurchaseTown, String petPicture) {
-		this.petName = petName;
-		this.petAge = petAge;
-		this.petGender = petGender;
+		this.petType = petType;
 		this.petBreed = petBreed;
-		this.petColor = petColor;
-		this.petBirthday = petBirthday;
+		this.petBirthDate = petBirthDate;
 		this.petPurchasePlace = petPurchasePlace;
 		this.petPurchaseTown = petPurchaseTown;
+		this.petPurchaseDate = petPurchaseDate;
+		this.petWeight = petWeight;
+		this.petColor = petColor;
 		this.petPicture = petPicture;
 	}
-	
-	public abstract String speak();
-	
 	public String getPetName() {
 		return petName;
 	}
 	public void setPetName(String petName) {
 		this.petName = petName;
 	}
-	public int getPetAge() {
-		return petAge;
+	public String getPetType() {
+		return petType;
 	}
-	public void setPetAge(int petAge) {
-		this.petAge = petAge;
-	}
-	public String getPetGender() {
-		return petGender;
-	}
-	public void setPetGender(String petGender) {
-		this.petGender = petGender;
+	public void setPetType(String petType) {
+		this.petType = petType;
 	}
 	public String getPetBreed() {
 		return petBreed;
@@ -54,17 +43,11 @@ public abstract class Pet {
 	public void setPetBreed(String petBreed) {
 		this.petBreed = petBreed;
 	}
-	public String getPetColor() {
-		return petColor;
+	public String getPetBirthDate() {
+		return petBirthDate;
 	}
-	public void setPetColor(String petColor) {
-		this.petColor = petColor;
-	}
-	public String getPetBirthday() {
-		return petBirthday;
-	}
-	public void setPetBirthday(String petBirthday) {
-		this.petBirthday = petBirthday;
+	public void setPetBirthDate(String petBirthDate) {
+		this.petBirthDate = petBirthDate;
 	}
 	public String getPetPurchasePlace() {
 		return petPurchasePlace;
@@ -78,10 +61,29 @@ public abstract class Pet {
 	public void setPetPurchaseTown(String petPurchaseTown) {
 		this.petPurchaseTown = petPurchaseTown;
 	}
+	public String getPetPurchaseDate() {
+		return petPurchaseDate;
+	}
+	public void setPetPurchaseDate(String petPurchaseDate) {
+		this.petPurchaseDate = petPurchaseDate;
+	}
+	public String getPetWeight() {
+		return petWeight;
+	}
+	public void setPetWeight(String petWeight) {
+		this.petWeight = petWeight;
+	}
+	public String getPetColor() {
+		return petColor;
+	}
+	public void setPetColor(String petColor) {
+		this.petColor = petColor;
+	}
 	public String getPetPicture() {
 		return petPicture;
 	}
 	public void setPetPicture(String petPicture) {
 		this.petPicture = petPicture;
 	}
+
 }
