@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
  
 import classes.UserAccounts;
-import utils.DBUtils;
+//import utils.DBUtils;
 import utils.MyUtils;
  
 @WebFilter(filterName = "cookieFilter", urlPatterns = { "/*" })
@@ -57,13 +57,13 @@ public class CookieFilter implements Filter {
        String checked = (String) session.getAttribute("COOKIE_CHECKED");
        if (checked == null && conn != null) {
            String userName = MyUtils.getUserNameInCookie(req);
-           try {
-               UserAccounts user = DBUtils.findUser(conn, userName);
-               MyUtils.storeLoginedUser(session, user);
-           } catch (SQLException e) {
-               e.printStackTrace();
-           }
-    
+//           try {
+//              UserAccounts user = DBUtils.findUser(conn, userName);
+//              MyUtils.storeLoginedUser(session, user);
+//           } catch (SQLException e) {
+//               e.printStackTrace();
+//           }
+//    
            // Mark checked.
            session.setAttribute("COOKIE_CHECKED", "CHECKED");
        }

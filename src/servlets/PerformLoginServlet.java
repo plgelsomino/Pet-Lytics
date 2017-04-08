@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
  
 import classes.UserAccounts;
-import utils.DBUtils;
+//import utils.DBUtils;
 import utils.MyUtils;
  
 //@WebServlet(urlPatterns = { "/doLogin" })
@@ -44,19 +44,19 @@ public class PerformLoginServlet extends HttpServlet {
             errorString = "Required username and password!";
         } else {
             Connection conn = MyUtils.getStoredConnection(request);
-            try {
-              
-                user = DBUtils.findUser(conn, username, password);
-                 
-                if (user == null) {
-                    hasError = true;
-                    errorString = "User Name or password invalid";
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                hasError = true;
-                errorString = e.getMessage();
-            }
+//            try {
+//              
+//                user = DBUtils.findUser(conn, username, password);
+//                 
+//                if (user == null) {
+//                    hasError = true;
+//                    errorString = "User Name or password invalid";
+//                }
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//                hasError = true;
+//                errorString = e.getMessage();
+//            }
         }
         
         // If error, forward to /WEB-INF/views/login.jsp

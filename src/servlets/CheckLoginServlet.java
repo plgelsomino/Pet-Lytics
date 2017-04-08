@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mysql.cj.jdbc.PreparedStatement;
+
+import classes.UserAccounts;
+import utils.DatabaseConnection;
+
 /**
  * Servlet implementation class CheckLoginServlet
  */
@@ -38,8 +43,10 @@ public class CheckLoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//set session object so we can get it for home page dash board
-		HttpSession session = request.getSession();
 		
+    	UserAccounts mobileUser =  null;
+    	HttpSession session = request.getSession(false);
+    	
 		String username = request.getParameter("username").toLowerCase();
         String password = request.getParameter("password").toLowerCase();
 
@@ -49,9 +56,11 @@ public class CheckLoginServlet extends HttpServlet {
         if(checkLogin(username, password)) {
         	//set session variables so we can get it for home page dashboard
         	session.setAttribute("username", request.getParameter("username"));
-        	session.setAttribute("password", request.getParameter("password"));
         	session.setAttribute("dbOwnerId", request.getParameter("bdOwnerId"));
         	
+        	session = request.getSession();
+        	session.setAttribute("mobileUser", mobileUser);		
+
         	//if login info is correct send to home screen to view dash board. 
         	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/pages/HomePage.jsp");
         	dispatcher.forward(request, response);
